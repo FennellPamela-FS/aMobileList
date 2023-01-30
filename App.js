@@ -19,9 +19,16 @@ import styles from './Appstyles';
 function HomeScreen({ navigation }) {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+  // this is online - update based on promise
+  // const networkCheck = await Network.getNetworkStateAsync();
+  Network.getNetworkStateAsync().then(data => {
+    console.log(data);
+  })
+
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={[styles.largeHeading, styles.italicFont]}>Hello Rose!</Text>
+      <Text style={[styles.largeHeading, styles.italicFont]}>Welcome</Text>
       <Heading />
       {/* check device OS setup */}
       {
